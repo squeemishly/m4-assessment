@@ -37,8 +37,18 @@ class Words {
     for (var property in wordCount) {
       if (wordCount.hasOwnProperty(property)) {
         $('.word-count').append(`<span style="font-size:${wordCount[property]}em">${property} </span>`)
+        Words.postTextToAPI(property)
       }
     }
+  }
+
+  static postTextToAPI(aSingleWord) {
+    const data = { word: { value: aSingleWord } }
+
+    $.post("https://wordwatch-api.herokuapp.com//api/v1/words", data)
+    .then((data) => {
+      console.log(data)
+    })
   }
 
 }
