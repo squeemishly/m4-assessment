@@ -1,4 +1,5 @@
 const $ = require('jquery')
+const htmlHelper = require('./htmlHelper')
 
 class Words {
   static topWord() {
@@ -6,7 +7,7 @@ class Words {
     .then((word) => {
       const topWord = Object.keys(word.word)[0]
       const numTimes = word.word[topWord]
-      $('h3').append(`${topWord} (${numTimes})`)
+      htmlHelper.appendTopWord(topWord, numTimes)
     })
   }
 
@@ -15,11 +16,11 @@ class Words {
   }
 
   static showWordFrequency() {
-    const allWords = $('.text-to-break-down').val().split(/[ :;,-.\]\[\n)(]+/)
+    const allWords = htmlHelper.getAllWords()
     const wordCount = {}
     Words.createWordCount(allWords, wordCount)
     Words.addWordsToWordCount(wordCount)
-    $('.text-to-break-down').val("")
+    htmlHelper.resetTextEntry()
   }
 
   static createWordCount(allWords, wordCount) {
@@ -36,7 +37,7 @@ class Words {
   static addWordsToWordCount(wordCount) {
     for (var property in wordCount) {
       if (wordCount.hasOwnProperty(property)) {
-        $('.word-count').append(`<span style="font-size:${wordCount[property]}em">${property} </span>`)
+        htmlHelper.addWordToWordCount(wordCount, property)
         Words.postTextToAPI(property)
       }
     }
@@ -52,7 +53,6 @@ class Words {
         Words.showWordFrequency()
     }
   }
-
 }
 
 module.exports = Words
