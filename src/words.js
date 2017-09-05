@@ -1,18 +1,15 @@
 const $ = require('jquery')
 const htmlHelper = require('./htmlHelper')
+const wordWatchApiCalls = require('./wordWatchApiCalls')
 
 class Words {
   static topWord() {
-    this.getTopWord()
+    wordWatchApiCalls.getTopWord()
     .then((word) => {
       const topWord = Object.keys(word.word)[0]
       const numTimes = word.word[topWord]
       htmlHelper.appendTopWord(topWord, numTimes)
     })
-  }
-
-  static getTopWord() {
-    return $.getJSON(`https://wordwatch-api.herokuapp.com//api/v1/top_word`)
   }
 
   static showWordFrequency() {
@@ -38,14 +35,9 @@ class Words {
     for (var property in wordCount) {
       if (wordCount.hasOwnProperty(property)) {
         htmlHelper.addWordToWordCount(wordCount, property)
-        Words.postTextToAPI(property)
+        wordWatchApiCalls.postTextToAPI(property)
       }
     }
-  }
-
-  static postTextToAPI(aSingleWord) {
-    const data = { word: { value: aSingleWord } }
-    $.post("https://wordwatch-api.herokuapp.com//api/v1/words", data)
   }
 
   static pressEnterToWord(e) {
