@@ -44,11 +44,7 @@ class Words {
 
   static postTextToAPI(aSingleWord) {
     const data = { word: { value: aSingleWord } }
-
     $.post("https://wordwatch-api.herokuapp.com//api/v1/words", data)
-    .then((data) => {
-      console.log(data)
-    })
   }
 
 }
