@@ -28,7 +28,7 @@ const Words = {
   },
 
   addWordsToWordCount (wordCount) {
-    for (var property in wordCount) {
+    for (let property in wordCount) {
       if (wordCount.hasOwnProperty(property)) {
         htmlHelper.addWordToWordCount(wordCount, property);
         wordWatchApiCalls.postTextToAPI(property);
