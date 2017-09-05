@@ -17,6 +17,12 @@ class Words {
   static showWordFrequency() {
     const allWords = $('.text-to-break-down').val().split(/[ :;,-.\]\[\n)(]+/)
     const wordCount = {}
+    Words.createWordCount(allWords, wordCount)
+    Words.addWordsToWordCount(wordCount)
+    $('.text-to-break-down').val("")
+  }
+
+  static createWordCount(allWords, wordCount) {
     allWords.forEach((word) => {
       word = word.toLowerCase()
       if (wordCount[word]) {
@@ -25,13 +31,16 @@ class Words {
         wordCount[word] = 1
       }
     })
+  }
+
+  static addWordsToWordCount(wordCount) {
     for (var property in wordCount) {
       if (wordCount.hasOwnProperty(property)) {
-        $('.word-count').append(`<span style="font-size:${wordCount[property]}em">${property}</span>`)
+        $('.word-count').append(`<span style="font-size:${wordCount[property]}em">${property} </span>`)
       }
     }
-    // debugger
   }
+
 }
 
 module.exports = Words
