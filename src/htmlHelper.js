@@ -1,3 +1,4 @@
+// 👍
 const $ = require('jquery')
 
 class htmlHelper {
