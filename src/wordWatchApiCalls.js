@@ -1,14 +1,15 @@
 const $ = require('jquery')
+const host = "https://wordwatch-api.herokuapp.com/api/v1"
 
 class wordWatchApiCalls {
   static getTopWord() {
-    return $.getJSON(`https://wordwatch-api.herokuapp.com//api/v1/top_word`)
+    return $.getJSON(`${host}/top_word`)
   }
 
 
   static postTextToAPI(aSingleWord) {
     const data = { word: { value: aSingleWord } }
-    $.post("https://wordwatch-api.herokuapp.com//api/v1/words", data)
+    $.post(`${host}/words`, data)
   }
 }
 
