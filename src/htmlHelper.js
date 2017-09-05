@@ -14,7 +14,7 @@ class htmlHelper {
   }
 
   static addWordToWordCount(wordCount, property) {
-    $('.word-count').append(`<span style="font-size:${wordCount[property]}em">${property} </span>`)
+    $('.word-count').append(`<span style="font-size:${wordCount[property]}em; padding-right:5px;">${property} </span>`)
   }
 }
 
