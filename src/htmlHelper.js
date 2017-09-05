@@ -6,7 +6,8 @@ class htmlHelper {
   }
 
   static getAllWords() {
-    return $('.text-to-break-down').val().split(/[ :;,-.\]\[\n)(]+/)
+    return $('.text-to-break-down').val().replace( /\n/g, " " ).split( " " )
+    // return $('.text-to-break-down').val().split(/[ :;,-.\]\[\n)(]+/)
   }
 
   static resetTextEntry() {
@@ -14,7 +15,6 @@ class htmlHelper {
   }
 
   static addWordToWordCount(wordCount, property) {
-    // $('.word-count').append(`<span style="font-size:${wordCount[property]}em; padding-right:5px;">${property} </span>`)
     $('.word-count').append(htmlHelper.wordBuilder(wordCount, property))
   }
 
