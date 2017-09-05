@@ -7,7 +7,6 @@ class htmlHelper {
 
   static getAllWords() {
     return $('.text-to-break-down').val().replace( /\n/g, " " ).split( " " )
-    // return $('.text-to-break-down').val().split(/[ :;,-.\]\[\n)(]+/)
   }
 
   static resetTextEntry() {
