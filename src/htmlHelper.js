@@ -1,3 +1,4 @@
+// 👍
 const $ = require('jquery')
 
 class htmlHelper {
@@ -6,11 +7,11 @@ class htmlHelper {
   }
 
   static getAllWords() {
-    return $('.text-to-break-down').val().replace( /\n/g, " " ).split( " " )
+    return $('.text-to-break-down').val().replace( /\n/g, ' ' ).split( ' ' )
   }
 
   static resetTextEntry() {
-    $('.text-to-break-down').val("")
+    $('.text-to-break-down').val('')
   }
 
   static addWordToWordCount(wordCount, property) {
@@ -18,7 +19,7 @@ class htmlHelper {
   }
 
   static wordBuilder(wordCount, property) {
-    return `<span style="font-size:${wordCount[property]}em; padding-right:5px;">${property} </span>`
+    return `<span style='font-size:${wordCount[property]}em; padding-right:5px;'>${property} </span>`
   }
 }
 
