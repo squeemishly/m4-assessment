@@ -47,6 +47,12 @@ class Words {
     $.post("https://wordwatch-api.herokuapp.com//api/v1/words", data)
   }
 
+  static pressEnterToWord(e) {
+    if (e.keyCode == 13) {
+        Words.showWordFrequency()
+    }
+  }
+
 }
 
 module.exports = Words
