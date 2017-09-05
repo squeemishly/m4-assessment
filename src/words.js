@@ -23,11 +23,7 @@ class Words {
   static createWordCount(allWords, wordCount) {
     allWords.forEach((word) => {
       word = word.toLowerCase()
-      if (wordCount[word]) {
-        wordCount[word] = wordCount[word] + 1
-      } else {
-        wordCount[word] = 1
-      }
+      wordCount[word] = wordCount[word] + 1 || 1
     })
   }
 
