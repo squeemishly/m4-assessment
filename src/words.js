@@ -15,8 +15,8 @@ const Words = {
   showWordFrequency () {
     const allWords = htmlHelper.getAllWords();
     const wordCount = {};
-    Words.createWordCount(allWords, wordCount);
-    Words.addWordsToWordCount(wordCount);
+    this.createWordCount(allWords, wordCount);
+    this.addWordsToWordCount(wordCount);
     htmlHelper.resetTextEntry();
   },
 
@@ -38,7 +38,7 @@ const Words = {
 
   pressEnterToWord (e) {
     if (e.keyCode == 13) {
-        Words.showWordFrequency();
+        this.showWordFrequency();
     }
   }
 }
